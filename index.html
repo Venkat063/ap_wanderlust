@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Wanderlust — Andhra Pradesh, District by District</title>
+<meta name="description" content="An interactive guide to Andhra Pradesh's 26 districts — history, geography, festivals, cuisine, temples, beaches and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=Noto+Serif+Telugu:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="light">
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav-brand">
+    <svg viewBox="0 0 32 32" fill="none"><path d="M16 2 C10 10 4 14 4 21 A12 12 0 0 0 28 21 C28 14 22 10 16 2Z" fill="var(--rust)"/><circle cx="16" cy="19" r="3.4" fill="var(--gold)"/></svg>
+    AP Wanderlust
+  </a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#zones">Zones</a>
+    <a href="#map">Districts</a>
+    <a href="#story">History</a>
+    <a href="#festivals">Festivals</a>
+    <a href="#cuisine">Cuisine</a>
+    <a href="#people">People</a>
+    <a href="#highlights">Highlights</a>
+    <a href="#gallery">Gallery</a>
+  </nav>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode">
+      <span class="puck"></span>
+      <svg class="gopuram" viewBox="0 0 20 24" fill="currentColor" style="color:var(--ink)"><path d="M10 0 6 5h8L10 0Zm-5 6v3h10V6H5Zm-2 4v2h14v-2H3Zm1 3v11h12V13H4Z" opacity=".55"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="hero-scene">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#123A52"/>
+          <stop offset="55%" stop-color="#0B3D5C"/>
+          <stop offset="100%" stop-color="#0A2A3D"/>
+        </linearGradient>
+        <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#F3C567" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#F3C567" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1200" height="800" fill="url(#skyGrad)"/>
+      <circle cx="900" cy="230" r="180" fill="url(#sunGlow)"/>
+      <circle cx="900" cy="230" r="58" fill="#F6D98A" opacity="0.9"/>
+      <!-- Eastern Ghats layered hills -->
+      <path class="hill hill-1" d="M0 560 L120 480 240 540 380 460 520 550 660 470 820 545 980 465 1120 530 1200 480 1200 800 0 800Z" fill="#0E4560" opacity="0.85"/>
+      <path class="hill hill-2" d="M0 620 L160 560 320 610 480 540 640 615 800 550 960 610 1120 560 1200 600 1200 800 0 800Z" fill="#0A3247" opacity="0.9"/>
+      <!-- coastline / sea -->
+      <path class="sea" d="M0 700 C220 660 320 730 560 690 C800 650 900 720 1200 680 L1200 800 0 800Z" fill="#083048"/>
+      <path class="wave wave-1" d="M0 720 C200 700 300 745 560 715 C800 690 920 735 1200 705" stroke="#3D7C9A" stroke-width="3" fill="none" opacity="0.5"/>
+      <path class="wave wave-2" d="M0 750 C220 730 340 768 580 742 C820 718 940 758 1200 736" stroke="#2C6E8E" stroke-width="3" fill="none" opacity="0.4"/>
+      <!-- gopuram silhouette -->
+      <g class="gopuram-silhouette" transform="translate(150,470)" fill="#0A2A3D">
+        <path d="M40 0 10 46h60L40 0Z"/>
+        <rect x="6" y="46" width="68" height="18"/>
+        <rect x="0" y="64" width="80" height="14"/>
+        <rect x="-6" y="78" width="92" height="90"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">26 Districts · 3 Regions · One Coastline</div>
+    <h1><span class="tel">ఆంధ్రప్రదేశ్</span>Andhra Pradesh, <br>hills to shoreline.</h1>
+    <p class="lede">A district-by-district guide to the state's coffee-covered Eastern Ghats, its Godavari–Krishna delta, and the dry temple plateaus of Rayalaseema — built for wandering.</p>
+    <div class="hero-actions">
+      <a href="#map" class="btn btn-primary">Explore the district map</a>
+      <a href="#story" class="btn btn-ghost" style="color:#F7F0E1;border-color:rgba(247,240,225,.4)">Read the story</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>26</b><span>Districts</span></div>
+      <div class="hero-stat"><b>974 km</b><span>Coastline</span></div>
+      <div class="hero-stat"><b>3</b><span>Cultural regions</span></div>
+      <div class="hero-stat"><b>12</b><span>Jyotirlinga in Nandyal</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll <svg width="12" height="18" viewBox="0 0 12 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l5 5 5-5M6 1v15"/></svg></div>
+</section>
+
+<!-- ============================================================
+     ZONES
+     ============================================================ -->
+<section class="section" id="zones">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The lay of the land</div>
+      <h2>Three regions, one state</h2>
+      <p>Every district here belongs to one of three cultural zones — each with its own terrain, climate and cuisine.</p>
+    </div>
+    <div class="zones" id="zoneGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INTERACTIVE MAP
+     ============================================================ -->
+<section class="section alt" id="map">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Click to explore</div>
+      <h2>26 districts, mapped</h2>
+      <p>A stylised coastline map — click any point, or pick a district from the list, to open its full profile.</p>
+    </div>
+    <div class="map-layout">
+      <div class="map-frame reveal">
+        <svg id="mapSvg" viewBox="0 0 380 760" xmlns="http://www.w3.org/2000/svg">
+          <path d="M120 10 C90 60 70 120 95 180 C60 220 55 280 90 320 C60 360 65 420 100 450 C75 490 70 540 105 570 C85 610 90 660 130 700 C150 730 170 745 190 750" stroke="var(--line)" stroke-width="14" fill="none" stroke-linecap="round"/>
+          <path id="coastPath" d="M120 10 C90 60 70 120 95 180 C60 220 55 280 90 320 C60 360 65 420 100 450 C75 490 70 540 105 570 C85 610 90 660 130 700 C150 730 170 745 190 750" stroke="var(--indigo)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="2 7" opacity="0.6"/>
+          <g id="mapNodes"></g>
+        </svg>
+        <div class="map-legend" id="mapLegend"></div>
+      </div>
+      <div class="map-list reveal" id="mapList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- District detail drawer (populated by JS) -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="drawer" aria-live="polite"></aside>
+
+<!-- ============================================================
+     HISTORY & GEOGRAPHY
+     ============================================================ -->
+<section class="section" id="story">
+  <div class="wrap">
+    <div class="split">
+      <div class="reveal">
+        <div class="eyebrow">Where it began</div>
+        <h2 style="font-size:clamp(2rem,4vw,2.8rem)">History &amp; Geography</h2>
+        <p class="lede" id="historySummary"></p>
+      </div>
+      <div class="reveal">
+        <ul class="point-list" id="historyPoints"></ul>
+      </div>
+    </div>
+    <div class="split" style="margin-top:64px">
+      <div class="reveal">
+        <div class="eyebrow">The terrain</div>
+        <h2 style="font-size:clamp(2rem,4vw,2.8rem)">Ghats, delta, plateau</h2>
+        <p class="lede" id="geoSummary"></p>
+      </div>
+      <div class="reveal">
+        <ul class="point-list" id="geoPoints"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FESTIVALS
+     ============================================================ -->
+<section class="section alt" id="festivals">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The calendar</div>
+      <h2>Festivals worth timing your trip around</h2>
+    </div>
+    <div class="grid-3" id="festivalGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CUISINE
+     ============================================================ -->
+<section class="section" id="cuisine">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The table</div>
+      <h2>Flavours of Andhra</h2>
+    </div>
+    <div class="grid-3" id="cuisineGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PERSONALITIES
+     ============================================================ -->
+<section class="section alt" id="people">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Who shaped it</div>
+      <h2>Famous personalities</h2>
+    </div>
+    <div class="grid-3" id="peopleGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INDUSTRIES
+     ============================================================ -->
+<section class="section" id="industries">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The economy</div>
+      <h2>Industries that run the state</h2>
+    </div>
+    <div class="grid-3" id="industryGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HIGHLIGHTS — temples / beaches / waterfalls / wildlife
+     ============================================================ -->
+<section class="section alt" id="highlights">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Go see it</div>
+      <h2>Temples, beaches, waterfalls &amp; wildlife</h2>
+    </div>
+    <div class="tabbar" id="tabbar"></div>
+    <div id="tabPanels"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY (illustrated, original SVG — no external photos)
+     ============================================================ -->
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">A visual sketch</div>
+      <h2>Andhra Pradesh, illustrated</h2>
+      <p>Original line-art impressions of the state's landscapes — swap in your own photography when you deploy this.</p>
+    </div>
+    <div class="gallery" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="nav-brand" style="color:#FBF6EA">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M16 2 C10 10 4 14 4 21 A12 12 0 0 0 28 21 C28 14 22 10 16 2Z" fill="#E7C264"/><circle cx="16" cy="19" r="3.4" fill="#0B3D5C"/></svg>
+          AP Wanderlust
+        </div>
+        <p>A student-built interactive guide to Andhra Pradesh's 26 districts — for portfolios, projects, and curious travellers.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#zones">Zones</a>
+        <a href="#map">Districts</a>
+        <a href="#story">History</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+      <div>
+        <h4>Discover</h4>
+        <a href="#festivals">Festivals</a>
+        <a href="#cuisine">Cuisine</a>
+        <a href="#people">People</a>
+        <a href="#highlights">Highlights</a>
+      </div>
+      <div>
+        <h4>About</h4>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Built as a portfolio / college project.</span>
+      <span>Illustrations original · content independently researched.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/content.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

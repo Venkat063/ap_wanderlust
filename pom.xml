@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.apwanderlust</groupId>
+    <artifactId>apwanderlust</artifactId>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
+
+    <name>AP Wanderlust</name>
+    <description>Interactive Andhra Pradesh tourism guide — 26 districts, static HTML/CSS/JS packaged as a WAR.</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+    </properties>
+
+    <build>
+        <finalName>apwanderlust</finalName>
+        <!-- This is a static site (no src/main/java). The WAR is built
+             straight from the repo root — index.html, css/, js/ and
+             WEB-INF/ — so the same folder works for GitHub Pages *and*
+             `mvn package`. Only the site files are picked up; everything
+             else (pom.xml, Dockerfile, deployment.yaml, README, .git) is
+             excluded below. -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <warSourceDirectory>.</warSourceDirectory>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <warSourceExcludes>
+                        pom.xml,Dockerfile,deployment.yaml,README.md,.gitignore,target/**,.git/**,.github/**
+                    </warSourceExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
