@@ -15,23 +15,26 @@
     <description>Interactive Andhra Pradesh tourism guide — 26 districts, static HTML/CSS/JS packaged as a WAR.</description>
 
     <properties>
+        <jdk.version>17</jdk.version>
+        <maven.compiler.source>${jdk.version}</maven.compiler.source>
+        <maven.compiler.target>${jdk.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-    </properties>
-         <properties>
-		<jdk.version>17</jdk.version>
-		<spring.version>5.3.34</spring.version>
-		<junit.version>4.11</junit.version>
-		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://http://3.92.0.234:9000/</sonar.host.url>
-		<sonar.login>admin</sonar.login>
-		<sonar.password>password</sonar.password> 
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-	</properties>
+        <!-- Unused unless you add matching <dependencies> below — kept here
+             only because the Jenkins job template expects them to exist. -->
+        <spring.version>5.3.34</spring.version>
+        <junit.version>4.11</junit.version>
+        <log4j.version>1.2.17</log4j.version>
+
+        <!-- SonarQube: prefer passing these as Jenkins credentials / -D flags
+             instead of committing a password to source control, e.g.:
+             mvn clean package sonar:sonar -Dsonar.login=$SONAR_TOKEN -->
+        <sonar.host.url>http://3.92.0.234:9000/</sonar.host.url>
+        <sonar.login>admin</sonar.login>
+        <sonar.password>password</sonar.password>
+    </properties>
 
     <build>
         <finalName>apwanderlust</finalName>
