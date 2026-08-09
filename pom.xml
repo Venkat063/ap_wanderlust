@@ -1,69 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <modelVersion>4.0.0</modelVersion>
+	<groupId>com.apwanderlust</groupId>
+	<artifactId>apwanderlust</artifactId>
+	<packaging>war</packaging>
+	<version>1.0.0-SNAPSHOT</version>
 
-    <groupId>com.apwanderlust</groupId>
-    <artifactId>apwanderlust</artifactId>
-    <version>1.0.0</version>
-    <packaging>war</packaging>
+	<name>ap-wanderlust</name>
+	<description>Interactive Andhra Pradesh tourism guide — 26 districts, static site packaged as a Java WAR.</description>
 
-    <name>AP Wanderlust</name>
-    <description>Interactive Andhra Pradesh tourism guide — 26 districts, static HTML/CSS/JS packaged as a WAR.</description>
+	<organization>
+		<name>AP Wanderlust</name>
+		<url>https://github.com/Venkat063/ap_wanderlust</url>
+	</organization>
 
-    <properties>
-        <jdk.version>17</jdk.version>
-        <maven.compiler.source>${jdk.version}</maven.compiler.source>
-        <maven.compiler.target>${jdk.version}</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
+	<properties>
+		<jdk.version>17</jdk.version>
+		<spring.version>5.3.34</spring.version>
+		<junit.version>4.11</junit.version>
+		<log4j.version>1.2.17</log4j.version>
+		<sonar.host.url>http://3.92.0.234:9000/</sonar.host.url>
+		<sonar.login>admin</sonar.login>
+		<sonar.password>password</sonar.password>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
 
-        <!-- Unused unless you add matching <dependencies> below — kept here
-             only because the Jenkins job template expects them to exist. -->
-        <spring.version>5.3.34</spring.version>
-        <junit.version>4.11</junit.version>
-        <log4j.version>1.2.17</log4j.version>
+	<dependencies>
 
-        <!-- SonarQube: prefer passing these as Jenkins credentials / -D flags
-             instead of committing a password to source control, e.g.:
-             mvn clean package sonar:sonar -Dsonar.login=$SONAR_TOKEN -->
-        <sonar.host.url>http://3.92.0.234:9000/</sonar.host.url>
-        <sonar.login>admin</sonar.login>
-        <sonar.password>password</sonar.password>
-    </properties>
+		<!-- Only dependency actually required: WEB-INF/web.xml needs the
+		     servlet API on the classpath at compile/provided scope even
+		     though this site has no servlet classes of its own. -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 
-    <build>
-        <finalName>apwanderlust</finalName>
-        <!-- This is a static site (no src/main/java). The WAR is built
-             straight from the repo root — index.html, css/, js/ and
-             WEB-INF/ — so the same folder works for GitHub Pages *and*
-             `mvn package`. Only the site files are picked up; everything
-             else (pom.xml, Dockerfile, deployment.yaml, README, .git) is
-             excluded below. -->
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.4.0</version>
-                <configuration>
-                    <warSourceDirectory>.</warSourceDirectory>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <warSourceExcludes>
-                        pom.xml,Dockerfile,deployment.yaml,README.md,.gitignore,target/**,.git/**,.github/**
-                    </warSourceExcludes>
-                </configuration>
-            </plugin>
-                 <plugin>
-    <groupId>org.sonarsource.scanner.maven</groupId>
-    <artifactId>sonar-maven-plugin</artifactId>
-    <version>5.2.0.4988</version>
-</plugin>
-        </plugins>
-             
-    </build>
+		<!-- The dependencies below match the tutorial template's shape but
+		     aren't used by anything in this repo yet — there's no src/main/java
+		     here to compile against them. Keep them if you plan to add real
+		     Java classes (e.g. a servlet-based contact form); otherwise they're
+		     dead weight and safe to delete. -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20231013</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- test dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<!-- Optional: only relevant if you're pushing build artifacts to your own
+	     Nexus. If you don't have a Nexus server running, delete this whole
+	     block — `mvn deploy` isn't needed for `mvn package`, Docker, or K8s. -->
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>AP Wanderlust Releases Nexus Repository</name>
+			<url>http://YOUR-NEXUS-HOST:8081/repository/apwanderlust-release/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>AP Wanderlust Snapshot Nexus Repository</name>
+			<url>http://YOUR-NEXUS-HOST:8081/repository/apwanderlust-snapshot/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<finalName>apwanderlust</finalName>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+
+			<!-- WAR built straight from the repo root (index.html, css/, js/,
+			     WEB-INF/) instead of src/main/webapp, so the same folder works
+			     for GitHub Pages and `mvn package` with no duplication. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.4.0</version>
+				<configuration>
+					<warSourceDirectory>.</warSourceDirectory>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<warSourceExcludes>
+						pom.xml,Dockerfile,deployment.yaml,README.md,.gitignore,target/**,.git/**,.github/**
+					</warSourceExcludes>
+				</configuration>
+			</plugin>
+
+			<!-- `mvn sonar:sonar` -->
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>5.2.0.4988</version>
+			</plugin>
+
+			<!-- `mvn jetty:run` for a quick local server while developing -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.11.v20150529</version>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<webApp>
+						<contextPath>/apwanderlust</contextPath>
+					</webApp>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+					<wtpContextName>apwanderlust</wtpContextName>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
 
 </project>
