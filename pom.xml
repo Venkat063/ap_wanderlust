@@ -24,6 +24,14 @@
 		<sonar.host.url>http://3.92.0.234:9000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>password</sonar.password>
+		<!-- No src/main/java exists in this static-site project, so without
+		     these, the Sonar Maven plugin defaults sonar.sources to the whole
+		     repo root — which then overlaps its (also-defaulted) test set and
+		     causes "pom.xml can't be indexed twice". Pointing sonar.sources at
+		     the actual site folders fixes it. -->
+		<sonar.sources>index.html,css,js,WEB-INF</sonar.sources>
+		<sonar.tests></sonar.tests>
+		<sonar.exclusions>target/**,.git/**,node_modules/**</sonar.exclusions>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
