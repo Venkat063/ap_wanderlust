@@ -103,12 +103,12 @@
 		<repository>
 			<id>nexus</id>
 			<name>AP Wanderlust Releases Nexus Repository</name>
-			<url>http://YOUR-NEXUS-HOST:8081/repository/apwanderlust-release/</url>
+			<url>http://3.88.168.146:8081/repository/ap-release/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus</id>
 			<name>AP Wanderlust Snapshot Nexus Repository</name>
-			<url>http://YOUR-NEXUS-HOST:8081/repository/apwanderlust-snapshot/</url>
+			<url>http://3.88.168.146:8081/repository/ap-snapshort/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
